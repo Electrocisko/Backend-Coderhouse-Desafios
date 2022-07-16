@@ -1,4 +1,5 @@
-const fs = require("fs");
+// const fs = require("fs");
+import fs from 'fs';
 
 //Ruta donde guardo el archivo
 let path = "./src/files/productos.txt";
@@ -81,4 +82,5 @@ class Contenedor {
   };
 }
 
-module.exports = Contenedor;
+// module.exports = Contenedor;
+export default Contenedor;

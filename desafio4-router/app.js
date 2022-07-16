@@ -1,17 +1,30 @@
-const express = require('express');
-const Contenedor = require('./src/contenedor/contenedor');
+
+import express from 'express';
+
+// const Contenedor = require('./src/contenedor/contenedor');
+import Contenedor from './src/contenedor/contenedor.js';
+
 const app = express();
 const PORT = 8080;
 let usaContenedor = new Contenedor();
+
+import productsRouter from './src/routes/products.router.js';
+// Esto 3 lineas es para poder usar __dirname con module https://exerror.com/referenceerror-__dirname-is-not-defined-in-es-module-scope/
+import path from 'path';
+import {fileURLToPath} from 'url';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
 
-app.get('/productos', async (req,res) => {
-    let productos = JSON.stringify(await usaContenedor.getAll());
-    res.end(productos);
-})
+// app.get('/productos', async (req,res) => {
+//     let productos = JSON.stringify(await usaContenedor.getAll());
+//     res.end(productos);
+// })
+
+app.use('/api', productsRouter);
 
 app.get('/productos/:id', async (req,res) => {
     let productos = await usaContenedor.getAll();
