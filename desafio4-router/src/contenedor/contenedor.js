@@ -1,6 +1,4 @@
-// const fs = require("fs");
-import fs from 'fs';
-
+import fs from "fs";
 //Ruta donde guardo el archivo
 let path = "./src/files/productos.txt";
 
@@ -23,7 +21,7 @@ class Contenedor {
   // Metodo que recibe un objeto y lo graba en el archivo.
   //Modifique el metodo para que reciba un segundo parametro
   //Si recibe el segundo parametro se utiliza este para darle el id.
-  save = async (objeto,idProd) => {
+  save = async (objeto, idProd) => {
     try {
       let listaDeProductos = await this.getAll();
       if (listaDeProductos.length === 0) {
@@ -35,7 +33,9 @@ class Contenedor {
         );
       } else {
         // Ternario si recibe segundo parametro o no.
-        idProd === undefined? objeto.id = listaDeProductos.length + 1 : objeto.id = idProd; 
+        idProd === undefined
+          ? (objeto.id = listaDeProductos.length + 1)
+          : (objeto.id = idProd);
         listaDeProductos.push(objeto);
         await fs.promises.writeFile(
           path,
@@ -46,7 +46,6 @@ class Contenedor {
     } catch (error) {
       console.log("no se pudo grabar", error);
     }
-   
   };
 
   // Metodo que devuelve el objeto por id o null si no hay coincidencia.
@@ -56,7 +55,7 @@ class Contenedor {
     if (objeto !== undefined) {
       return objeto;
     } else {
-      return null
+      return null;
     }
   };
   // Metodo que borra todo el archivo.
@@ -82,5 +81,4 @@ class Contenedor {
   };
 }
 
-// module.exports = Contenedor;
 export default Contenedor;
