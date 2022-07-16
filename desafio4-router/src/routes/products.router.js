@@ -1,6 +1,8 @@
 import { Router } from "express";
+import upLoader from "../../utils.js";
 import Contenedor from "../contenedor/contenedor.js";
-// const Contenedor = require('./src/contenedor/contenedor');
+
+
 
 let usaContenedor = new Contenedor();
 const router = Router();
@@ -23,9 +25,9 @@ router.get("/productos/:id", async (req, res) => {
     : res.end('{ "error" : "producto inexistente"}');
 });
 
-router.post("/productos", async (req, res) => {
+router.post("/productos",upLoader.single('file'), async (req, res) => {
   let newProduct = req.body;
-  console.log("funca", newProduct);
+  newProduct.thumbnail = req.file.path;
   let productID = await usaContenedor.save(newProduct);
   res.send({
     message: "Producto adherido",
