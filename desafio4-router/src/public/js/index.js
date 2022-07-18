@@ -9,6 +9,10 @@ const handleSubmit = (evt, form, route) => {
   });
 };
 
-productForm.addEventListener("submit", (e) =>
-  handleSubmit(e, e.target, "api/productos")
+productForm.addEventListener("submit", (e) =>{
+  handleSubmit(e, e.target, "api/productos");
+  alert('Agregado');
+  productForm.reset();
+}
+  
 );

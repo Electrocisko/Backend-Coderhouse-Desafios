@@ -19,7 +19,6 @@ router.get("/productos/:id", async (req, res) => {
     return res.status(400).send("El id tiene que ser numerico");
   let id = parseInt(req.params.id);
   let producto = await usaContenedor.getById(id);
-  console.log("producto por id", producto);
   producto !== null
     ? res.end(JSON.stringify(producto))
     : res.end('{ "error" : "producto inexistente"}');
