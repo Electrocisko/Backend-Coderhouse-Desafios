@@ -3,36 +3,36 @@
 		"title": "Shampoo",
 		"price": 2000,
 		"thumbnail": "https://www.sedal.com.ar/content/dam/unilever/sunsilk/argentina/pack_shot/7791293031095-1979370-png.png",
-		"id": 3
+		"id": 1
 	},
 	{
 		"title": "Perfume",
 		"price": 8000,
 		"thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGJx0WuHreTVvHCrwWKk0FaDT2C2WKlWb5KA&usqp=CAU",
-		"id": 4
-	},
-	{
-		"title": "Bus",
-		"price": 450000,
-		"thumbnail": "https://farmacityar.vteximg.com.br/arquivos/ids/204300-600-600/157030_acondicionador-pantene-pro-v-3-minute-miracle-restauracion-x-170-ml_imagen-1.jpg?v=637388824989600000",
-		"id": 99
+		"id": 2
 	},
 	{
 		"title": "Sopa",
 		"price": 678,
 		"thumbnail": "https://farmacityar.vteximg.com.br/arquivos/ids/204300-600-600/157030_acondicionador-pantene-pro-v-3-minute-miracle-restauracion-x-170-ml_imagen-1.jpg?v=637388824989600000",
-		"id": 6
+		"id": 3
 	},
 	{
 		"title": "Vino lopez",
 		"price": "500",
 		"thumbnail": "src\\public\\img\\1658149984249-lopez.jpeg",
-		"id": 6
+		"id": 4
 	},
 	{
-		"title": "Cerveza",
-		"price": "450",
-		"thumbnail": "src\\public\\img\\1658151407145-cerveza2.jpeg",
+		"title": "Whisky Jack Daniels",
+		"price": "8000",
+		"thumbnail": "src\\public\\img\\1658151859883-jack.jpeg",
+		"id": 5
+	},
+	{
+		"title": "Vino Espumante",
+		"price": "2000",
+		"thumbnail": "src\\public\\img\\1658152760396-champagne.jpeg",
 		"id": 6
 	}
 ]
