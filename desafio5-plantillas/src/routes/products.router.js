@@ -1,5 +1,5 @@
 import { Router } from "express";
-import upLoader from "../../utils.js";
+import upLoader from "../utils.js";
 import Contenedor from "../contenedor/contenedor.js";
 
 

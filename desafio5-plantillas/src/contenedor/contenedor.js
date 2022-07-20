@@ -1,6 +1,8 @@
 import fs from "fs";
 //Ruta donde guardo el archivo
-let path = "./src/files/productos.txt";
+// let path = "./src/files/productos.txt";
+let path ="./files/productos.txt";
+
 
 class Contenedor {
   // Metodo que devuelve todos

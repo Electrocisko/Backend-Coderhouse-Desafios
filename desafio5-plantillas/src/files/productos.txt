@@ -34,5 +34,11 @@
 		"price": 300,
 		"thumbnail": "src\\public\\img\\1658152760396-champagne.jpeg",
 		"id": 6
+	},
+	{
+		"title": "aa",
+		"price": "aaa",
+		"thumbnail": "public\\img\\1658316913323-champagne.jpeg",
+		"id": 7
 	}
 ]
