@@ -3,13 +3,7 @@ import Contenedor from "./contenedor/contenedor.js";
 import productsRouter from "./routes/products.router.js";
 import handlebars from "express-handlebars";
 import viewsRouter from './routes/views.router.js';
-
-// Esto 3 lineas es para poder usar __dirname con module https://exerror.com/referenceerror-__dirname-is-not-defined-in-es-module-scope/
-import path from "path";
-import { fileURLToPath } from "url";
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
+import __dirname from "./utils.js";
 
 const app = express();
 const PORT = 8080;
@@ -25,9 +19,6 @@ app.use('/',viewsRouter);
 app.engine('handlebars', handlebars.engine());
 app.set('views',__dirname+'/views');
 app.set('view engine', 'handlebars');
-
-
-
 
 
 const server = app.listen(PORT, () => {

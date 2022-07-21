@@ -1,7 +1,7 @@
 import fs from "fs";
-//Ruta donde guardo el archivo
-// let path = "./src/files/productos.txt";
-let path ="./files/productos.txt";
+import __dirname from "../utils.js";
+
+let path = __dirname+'/files/productos.txt';
 
 
 class Contenedor {

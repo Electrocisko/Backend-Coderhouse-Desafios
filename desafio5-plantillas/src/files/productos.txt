@@ -40,5 +40,11 @@
 		"price": "aaa",
 		"thumbnail": "public\\img\\1658316913323-champagne.jpeg",
 		"id": 7
+	},
+	{
+		"title": "aaaaaa",
+		"price": "aaaaaaaaa",
+		"thumbnail": "G:\\Coderhouse\\backend\\Desafios-backend\\desafio5-plantillas\\src\\public\\img\\1658401480502-cerveza2.jpeg",
+		"id": 8
 	}
 ]
