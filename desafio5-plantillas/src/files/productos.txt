@@ -16,5 +16,11 @@
 		"price": "1200",
 		"thumbnail": "1658424276559-hamburguesa.png",
 		"id": 3
+	},
+	{
+		"title": "Fruta rica",
+		"price": "200",
+		"thumbnail": "1658429966633-fruta.png",
+		"id": 4
 	}
 ]

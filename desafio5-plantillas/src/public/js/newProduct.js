@@ -1,4 +1,4 @@
-let productForm = document.getElementById("productForm");
+const productForm = document.getElementById("productForm");
 
 const handleSubmit = (evt, form, route) => {
   evt.preventDefault();
@@ -9,10 +9,8 @@ const handleSubmit = (evt, form, route) => {
   });
 };
 
-productForm.addEventListener("submit", (e) =>{
+productForm.addEventListener("submit", (e) => {
   handleSubmit(e, e.target, "api/productos");
-  alert('Agregado');
+  alert("Agregado");
   productForm.reset();
-}
-  
-);
+});
