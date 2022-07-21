@@ -2,6 +2,11 @@
 
 {{#each products}}
     <div>
-        <p>Producto: {{title}} -  {{price}} $ - <img src="{{thumbnail}}" width="300px"></p>
+        <ul>
+            <li>
+                Producto: {{title}} -  {{price}} $ - <img src="http://localhost:8080/img/{{thumbnail}}" 
+            </li>
+        </ul>
+        
     </div>
 {{/each}}

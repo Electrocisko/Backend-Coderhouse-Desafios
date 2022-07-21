@@ -26,7 +26,7 @@ router.get("/productos/:id", async (req, res) => {
 
 router.post("/productos",upLoader.single('file'), async (req, res) => {
   let newProduct = req.body;
-  newProduct.thumbnail = req.file.path;
+  newProduct.thumbnail = req.file.filename;
   let productID = await usaContenedor.save(newProduct);
   res.send({
     message: "Producto adherido",
