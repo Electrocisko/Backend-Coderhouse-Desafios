@@ -46,5 +46,11 @@
 		"price": "345",
 		"thumbnail": "1658527387216-choclo.png",
 		"id": 8
+	},
+	{
+		"title": "Helado soft",
+		"price": "643",
+		"thumbnail": "1658528821177-helado.png",
+		"id": 9
 	}
 ]
