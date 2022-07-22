@@ -1,0 +1,50 @@
+[
+	{
+		"title": "Papa Fritas",
+		"price": "200",
+		"thumbnail": "1658424218728-fritas.png",
+		"id": 1
+	},
+	{
+		"title": "Mostaza",
+		"price": "300",
+		"thumbnail": "1658424245052-aderezo.png",
+		"id": 2
+	},
+	{
+		"title": "Hamburguesa",
+		"price": "1200",
+		"thumbnail": "1658424276559-hamburguesa.png",
+		"id": 3
+	},
+	{
+		"title": "Fruta rica",
+		"price": "200",
+		"thumbnail": "1658429966633-fruta.png",
+		"id": 4
+	},
+	{
+		"title": "Helado Rico",
+		"price": "600",
+		"thumbnail": "1658438043530-helado.png",
+		"id": 5
+	},
+	{
+		"title": "Pancho",
+		"price": "400",
+		"thumbnail": "1658518249237-pancho.png",
+		"id": 6
+	},
+	{
+		"title": "Hamburguesa",
+		"price": "800",
+		"thumbnail": "1658525621070-hamburguesa.png",
+		"id": 7
+	},
+	{
+		"title": "Maiz",
+		"price": "345",
+		"thumbnail": "1658527387216-choclo.png",
+		"id": 8
+	}
+]
