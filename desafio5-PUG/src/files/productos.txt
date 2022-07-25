@@ -42,21 +42,15 @@
 		"id": 7
 	},
 	{
-		"title": "Maiz",
-		"price": "345",
-		"thumbnail": "1658527387216-choclo.png",
+		"title": "Salchicha Viena",
+		"price": "380",
+		"thumbnail": "1658702652491-pancho.png",
 		"id": 8
 	},
 	{
-		"title": "Helado soft",
-		"price": "643",
-		"thumbnail": "1658528821177-helado.png",
+		"title": "Arroz blanco",
+		"price": "300",
+		"thumbnail": "1658750327617-arroz.png",
 		"id": 9
-	},
-	{
-		"title": "Mayonesa",
-		"price": "334",
-		"thumbnail": "1658576030746-aderezo.png",
-		"id": 10
 	}
 ]

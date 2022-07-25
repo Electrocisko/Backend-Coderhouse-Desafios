@@ -28,5 +28,11 @@
 		"price": "600",
 		"thumbnail": "1658438043530-helado.png",
 		"id": 5
+	},
+	{
+		"title": "Mayonesa",
+		"price": "366",
+		"thumbnail": "1658575914016-aderezo.png",
+		"id": 6
 	}
 ]
