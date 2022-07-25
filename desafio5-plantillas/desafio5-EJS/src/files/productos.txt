@@ -58,5 +58,11 @@
 		"price": "334",
 		"thumbnail": "1658576030746-aderezo.png",
 		"id": 10
+	},
+	{
+		"title": "Arroz Blanco",
+		"price": "230",
+		"thumbnail": "1658750991703-arroz.png",
+		"id": 11
 	}
 ]

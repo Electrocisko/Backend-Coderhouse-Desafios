@@ -30,9 +30,33 @@
 		"id": 5
 	},
 	{
-		"title": "Mayonesa",
-		"price": "366",
-		"thumbnail": "1658575914016-aderezo.png",
+		"title": "Pancho",
+		"price": "400",
+		"thumbnail": "1658518249237-pancho.png",
 		"id": 6
+	},
+	{
+		"title": "Hamburguesa",
+		"price": "800",
+		"thumbnail": "1658525621070-hamburguesa.png",
+		"id": 7
+	},
+	{
+		"title": "Salchicha Viena",
+		"price": "380",
+		"thumbnail": "1658702652491-pancho.png",
+		"id": 8
+	},
+	{
+		"title": "Arroz blanco",
+		"price": "300",
+		"thumbnail": "1658750327617-arroz.png",
+		"id": 9
+	},
+	{
+		"title": "Brochete",
+		"price": "566",
+		"thumbnail": "1658750893395-brochet.png",
+		"id": 10
 	}
 ]
