@@ -1,0 +1,22 @@
+<h1>Ingrese su producto</h1>
+<div class="container">
+   <form id="productForm">
+        <label class="form-label">Producto</label>
+        <input id="title" name = "title" class="form-control">
+        <label class="form-label">Precio</label>
+        <input id="price" name = "price" class="form-control">
+        <br>
+        <input id="file" type="file" name="file" class="form-control">
+        <br>
+        <input  type="submit" class="btn btn-success">
+   </form>
+</div>
+<br>
+<a href="http://localhost:8080/productos" class="fs-3"> Ver Productos</a>
+<br>
+
+<div id="mostarProductos"></div>
+
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="js/newProduct.js"></script>
