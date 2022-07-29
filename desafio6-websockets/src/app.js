@@ -2,7 +2,7 @@ import express from "express";
 import Contenedor from "./contenedor/contenedor.js";
 import productsRouter from "./routes/products.router.js";
 import handlebars from "express-handlebars";
-import viewsRouter from './routes/views.router.js';
+import viewsRouter from "./routes/views.router.js";
 import __dirname from "./utils.js";
 import { Server } from "socket.io";
 
@@ -12,24 +12,20 @@ let products = [];
 const leeProductos = async () => {
   products = await usaDatosContenedor.getAll();
   return products;
-}
+};
 
 const app = express();
 const PORT = process.env.PORT || 8080;
 
-
-
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use("/api", productsRouter);
-app.use('/', express.static(__dirname + '/public'));
-app.use('/',viewsRouter);
+app.use("/", express.static(__dirname + "/public"));
+app.use("/", viewsRouter);
 
-// Template config engine
-app.engine('handlebars', handlebars.engine());
-app.set('views',__dirname+'/views');
-app.set('view engine', 'handlebars');
-
+app.engine("handlebars", handlebars.engine());
+app.set("views", __dirname + "/views");
+app.set("view engine", "handlebars");
 
 const server = app.listen(PORT, () => {
   console.log(
@@ -43,12 +39,17 @@ server.on("Error", (error) => {
 
 const io = new Server(server);
 
-io.on('connection', (socket) => {
-  console.log('nuevo usuario conectado',socket.id);// Lo pongo para chequear en desarollo
-  let datos =  leeProductos();
-  datos.then((x) => {
-    let mostrar = x;
-    io.sockets.emit('listaProduct', mostrar)
-  })
-  
-})
+io.on("connection", (socket) => {
+  console.log("nuevo usuario conectado", socket.id); // Lo pongo para chequear en desarollo
+  socket.on("productoNuevo", (data) => {
+    console.log(data); // Lo pongo para chequear en desarollo
+    //En realidad no uso el data, uso el callback para que ejecute leeProductos() y asi un emmit actualizado
+    leeProductos().then((mostrar) => {
+      io.sockets.emit("listaProduct", mostrar);
+    });
+  });
+  // al conectar lee los productos y hacen un emit a todos
+  leeProductos().then((mostrar) => {
+    io.sockets.emit("listaProduct", mostrar);
+  });
+});

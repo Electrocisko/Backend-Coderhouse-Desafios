@@ -40,5 +40,29 @@
 		"price": "567",
 		"thumbnail": "1658752540090-aderezo.png",
 		"id": 7
+	},
+	{
+		"title": "Pepsi Light",
+		"price": "300",
+		"thumbnail": "1659103795683-pancho.png",
+		"id": 8
+	},
+	{
+		"title": "Pancho",
+		"price": "134",
+		"thumbnail": "1659103880749-pancho.png",
+		"id": 9
+	},
+	{
+		"title": "Big Mac",
+		"price": "800",
+		"thumbnail": "1659116815217-hamburguesa.png",
+		"id": 10
+	},
+	{
+		"title": "Papas fritas con chedar",
+		"price": "400",
+		"thumbnail": "1659116920760-fritas.png",
+		"id": 11
 	}
 ]

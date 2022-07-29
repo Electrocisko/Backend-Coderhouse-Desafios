@@ -2,11 +2,11 @@
 <div class="container">
    <form id="productForm">
         <label class="form-label">Producto</label>
-        <input id="title" name = "title" class="form-control">
+        <input id="title" name = "title" class="form-control" required>
         <label class="form-label">Precio</label>
-        <input id="price" name = "price" class="form-control">
+        <input id="price" name = "price" class="form-control" required>
         <br>
-        <input id="file" type="file" name="file" class="form-control">
+        <input id="file" type="file" name="file" class="form-control" required>
         <br>
         <input  type="submit" class="btn btn-success">
    </form>
@@ -16,6 +16,7 @@
 <br>
 
 <div id="mostarProductos"></div>
+
 
 
 <script src="/socket.io/socket.io.js"></script>
