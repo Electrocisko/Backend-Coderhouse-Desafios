@@ -1,3 +1,4 @@
+
 const socket = io();
 
 const productForm = document.getElementById("productForm");
@@ -37,31 +38,44 @@ socket.on('listaProduct', (data) => {
 function renderChat (data) {
   const html = data.map( (elem,index) => {
       return (`<div>
-      ${elem.user} :  ${elem.mensaje}
+      ${elem.user} :  <strong>${elem.mensaje}</strong>
       </div>`)}).join(" ");
       document.getElementById('mostrarChat').innerHTML = html;
 }
+
+// Sweet alert para hacer capturar el nickname del usuario que va chatear
+let userNick;
+
+Swal.fire({
+    title: "Logueate",
+    input: "text",
+    text: "Ingrese su nick",
+    inputValidator: (value) => {
+        return !value && "Necesito que se loguee para continuar"
+    },
+    allowOutsideClick: false,
+    allowEscapeKey: false
+}).then( (result) => {
+    userNick = result.value;
+    socket.connect();
+}) 
 
 let chat = document.getElementById('boton');
 let mostrarTexto = document.getElementById('mostrarTexto');
 
 chat.addEventListener('click', evt =>{
+    let time = Date();
     let dato = document.getElementById('textChat');
     if (dato.value.trim().length > 0){
         socket.emit('mensaje', {
-            user: "Toma color",
+            user: userNick+' '+time,
             mensaje: dato.value
         });
         dato.value = "";
     }
 }); 
 
-
-
-
 // socket que escucha los chats
 socket.on('chat', (data) => {
-  console.log('data',data)
-  console.log(typeof data)
   renderChat(data);
 })

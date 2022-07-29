@@ -64,5 +64,17 @@
 		"price": "400",
 		"thumbnail": "1659116920760-fritas.png",
 		"id": 11
+	},
+	{
+		"title": "Fruta de estacion",
+		"price": "300",
+		"thumbnail": "1659124773020-fruta.png",
+		"id": 12
+	},
+	{
+		"title": "Hamburguesa Vegana",
+		"price": "450",
+		"thumbnail": "1659131881682-hamburguesa.png",
+		"id": 13
 	}
 ]
