@@ -19,8 +19,8 @@ productForm.addEventListener("submit", (e) => {
   productForm.reset();
 });
 
-
-function  render (data) {
+// Funcion que renderiza los productos
+function  renderProducts (data) {
   const html = data.map( (elem,index) => {
       return (`<div>
       ${elem.title} :  ${elem.price} : <img src="http://localhost:8080/img/${elem.thumbnail}" width="35px"/>
@@ -28,7 +28,40 @@ function  render (data) {
       document.getElementById('mostarProductos').innerHTML = html;
 }
 
-
+// Socket que escucha la listaProduct
 socket.on('listaProduct', (data) => {
-  render(data);
+  renderProducts(data);
+})
+
+// Funcion que renderiza los chats
+function renderChat (data) {
+  const html = data.map( (elem,index) => {
+      return (`<div>
+      ${elem.user} :  ${elem.mensaje}
+      </div>`)}).join(" ");
+      document.getElementById('mostrarChat').innerHTML = html;
+}
+
+let chat = document.getElementById('boton');
+let mostrarTexto = document.getElementById('mostrarTexto');
+
+chat.addEventListener('click', evt =>{
+    let dato = document.getElementById('textChat');
+    if (dato.value.trim().length > 0){
+        socket.emit('mensaje', {
+            user: "Toma color",
+            mensaje: dato.value
+        });
+        dato.value = "";
+    }
+}); 
+
+
+
+
+// socket que escucha los chats
+socket.on('chat', (data) => {
+  console.log('data',data)
+  console.log(typeof data)
+  renderChat(data);
 })

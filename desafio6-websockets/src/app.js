@@ -8,6 +8,7 @@ import { Server } from "socket.io";
 
 let usaDatosContenedor = new Contenedor();
 let products = [];
+let mensajesChat = [];
 
 const leeProductos = async () => {
   products = await usaDatosContenedor.getAll();
@@ -52,4 +53,10 @@ io.on("connection", (socket) => {
   leeProductos().then((mostrar) => {
     io.sockets.emit("listaProduct", mostrar);
   });
+
+  socket.on('mensaje', (texto) => {
+    console.log(texto)
+    mensajesChat.push(texto)
+    io.sockets.emit('chat',mensajesChat)
+  })
 });
