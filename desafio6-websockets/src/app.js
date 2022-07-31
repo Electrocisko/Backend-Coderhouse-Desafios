@@ -5,6 +5,7 @@ import handlebars from "express-handlebars";
 import viewsRouter from "./routes/views.router.js";
 import __dirname from "./utils.js";
 import { Server } from "socket.io";
+import fs from 'fs';
 
 let usaDatosContenedor = new Contenedor();
 let products = [];
@@ -38,6 +39,20 @@ server.on("Error", (error) => {
   console.log("Error en el servidor", error);
 });
 
+// function que grabar el char en archivo
+
+
+let path = __dirname+'/files/chat.txt';
+
+const saveChat = async (chatText) =>{
+  try {
+    await fs.promises.writeFile(path,chatText);
+    console.log('guardado chat');
+  } catch (error) {
+    console.log('error al grabar archivo',error);
+  }
+} 
+
 const io = new Server(server);
 
 io.on("connection", (socket) => {
@@ -57,5 +72,9 @@ io.on("connection", (socket) => {
   socket.on('mensaje', (texto) => {
     mensajesChat.push(texto)
     io.sockets.emit('chat',mensajesChat)
+    
+    saveChat(JSON.stringify(mensajesChat, null, "\t"));
+
   })
 });
+

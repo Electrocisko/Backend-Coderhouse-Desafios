@@ -1,0 +1,22 @@
+[
+	{
+		"user": "A",
+		"time": "Sun Jul 31 2022 16:18:45 GMT-0300 (hora estándar de Argentina)",
+		"mensaje": "Como va?"
+	},
+	{
+		"user": "b",
+		"time": "Sun Jul 31 2022 16:18:52 GMT-0300 (hora estándar de Argentina)",
+		"mensaje": "Este es un mensaje"
+	},
+	{
+		"user": "A",
+		"time": "Sun Jul 31 2022 16:18:58 GMT-0300 (hora estándar de Argentina)",
+		"mensaje": "Este es un mensaje"
+	},
+	{
+		"user": "b",
+		"time": "Sun Jul 31 2022 16:19:04 GMT-0300 (hora estándar de Argentina)",
+		"mensaje": "aaaa"
+	}
+]
