@@ -55,7 +55,6 @@ io.on("connection", (socket) => {
   });
 
   socket.on('mensaje', (texto) => {
-    console.log(texto)
     mensajesChat.push(texto)
     io.sockets.emit('chat',mensajesChat)
   })

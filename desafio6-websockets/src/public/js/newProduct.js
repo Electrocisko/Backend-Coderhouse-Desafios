@@ -38,7 +38,7 @@ socket.on('listaProduct', (data) => {
 function renderChat (data) {
   const html = data.map( (elem,index) => {
       return (`<div>
-      ${elem.user} :  <strong>${elem.mensaje}</strong>
+     <strong> ${elem.user}:</strong> ${elem.time} <strong>${elem.mensaje}</strong>
       </div>`)}).join(" ");
       document.getElementById('mostrarChat').innerHTML = html;
 }
@@ -60,15 +60,17 @@ Swal.fire({
     socket.connect();
 }) 
 
-let chat = document.getElementById('boton');
+let chat = document.getElementById('chatBox');
 let mostrarTexto = document.getElementById('mostrarTexto');
 
-chat.addEventListener('click', evt =>{
+chat.addEventListener('submit', evt =>{
+    evt.preventDefault();
     let time = Date();
     let dato = document.getElementById('textChat');
     if (dato.value.trim().length > 0){
         socket.emit('mensaje', {
-            user: userNick+' '+time,
+            user: userNick,
+            time: time,
             mensaje: dato.value
         });
         dato.value = "";
