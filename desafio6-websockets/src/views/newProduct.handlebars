@@ -1,5 +1,6 @@
-<h1>Ingrese su producto</h1>
+
 <div class="container">
+  <h1>Ingrese su producto</h1>
   <form id="productForm">
     <label class="form-label">Producto</label>
     <input id="title" name="title" class="form-control" required />
@@ -16,13 +17,26 @@
 <a href="http://localhost:8080/productos" class="fs-3"> Ver Productos</a>
 <br />
 
-<div id="mostarProductos"></div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col" class="fs-6"># ID</th>
+      <th scope="col" class="fs-6">Producto</th>
+      <th scope="col" class="fs-6">Precio $</th>
+      <th scope="col" class="fs-6">Imagen</th>
+    </tr>
+  </thead>
+  <tbody id="mostarProductos">
+    
+  </tbody>
+</table>
+
 <br>
 <div>
    <hr>
    <h2>Chatbox</h2>
   <form id="chatBox">
-    <input type="text" id="textChat" />
+    <input type="text" id="textChat" style="width: 800px" />
     <button type="submit" id="boton">Enviar</button>
   </form>
 

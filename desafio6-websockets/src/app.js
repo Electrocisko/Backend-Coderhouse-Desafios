@@ -39,14 +39,13 @@ server.on("Error", (error) => {
   console.log("Error en el servidor", error);
 });
 
-
 const io = new Server(server);
 
 io.on("connection", (socket) => {
   console.log("nuevo usuario conectado", socket.id); // Lo pongo para chequear en desarollo
   socket.on("productoNuevo", (data) => {
     console.log(data); // Lo pongo para chequear en desarollo
-    //En realidad no uso el data, uso el callback para que ejecute leeProductos() y asi un emmit actualizado
+    //En realidad no uso el data, uso el callback para que ejecute leeProductos() y asi realiza un emmit actualizado
     leeProductos().then((mostrar) => {
       io.sockets.emit("listaProduct", mostrar);
     });
