@@ -5,6 +5,7 @@ import handlebars from "express-handlebars";
 import viewsRouter from "./routes/views.router.js";
 import __dirname, { saveChat } from "./utils.js";
 import { Server } from "socket.io";
+import db from "./database/sqlProductsBase.js";
 
 
 let usaDatosContenedor = new Contenedor();
@@ -55,9 +56,15 @@ io.on("connection", (socket) => {
     io.sockets.emit("listaProduct", mostrar);
   });
 
-  socket.on('mensaje', (texto) => {
-    mensajesChat.push(texto)
-    io.sockets.emit('chat',mensajesChat)
+  socket.on('mensaje', async (texto) => {
+    mensajesChat.push(texto);
+    io.sockets.emit('chat',mensajesChat);
+    try {
+      await db('chats').insert(mensajesChat);
+      console.log('database chat actualizado');
+   } catch (error) {
+     console.log(error);
+   }
     saveChat(JSON.stringify(mensajesChat, null, "\t")); // saveChat Graba el chat , la funcion esta en utils.js
   })
 });

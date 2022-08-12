@@ -1,6 +1,8 @@
 import { Router } from "express";
 import {upLoader} from "../utils.js";
 import Contenedor from "../contenedor/contenedor.js";
+import db from "../database/sqlProductsBase.js";
+
 
 
 
@@ -11,6 +13,27 @@ router.get("/productos", async (req, res) => {
   let productos = JSON.stringify(await usaContenedor.getAll());
   res.end(productos);
 });
+
+//cree una vista de productos en base de datos api/dbproductos
+router.get("/dbproductos", async (req, res) => {
+  try {
+    let products = await db('products').select('*');
+    res.send(products);
+} catch (error) {
+    console.log('error aca',error)
+}
+});
+
+// cree una vista para los chats la ruta seria api/dbchats
+router.get("/dbchats", async (req, res) => {
+  try {
+    let dbchats = await db('chats').select('*');
+    res.send(dbchats);
+} catch (error) {
+    console.log(error)
+}
+});
+
 
 router.get("/productos/:id", async (req, res) => {
   let productos = await usaContenedor.getAll();
@@ -28,11 +51,25 @@ router.post("/productos",upLoader.single('file'), async (req, res) => {
   let newProduct = req.body;
   newProduct.thumbnail = req.file.filename;
   let productID = await usaContenedor.save(newProduct);
+ // Creo el dato que lo tomo del body para insertar en la tabla.
+let dato = [{
+  title: newProduct.title,
+  price: newProduct.price,
+  thumbnail: newProduct.thumbnail
+}]
+try {
+   await db('products').insert(dato);
+} catch (error) {
+  console.log(error);
+}
   res.send({
     message: "Producto adherido",
     id: productID,
   });
 });
+
+
+
 
 router.put("/productos/:id", async (req, res) => {
   let productos = await usaContenedor.getAll();

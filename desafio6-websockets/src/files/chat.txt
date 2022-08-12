@@ -1,22 +1,3 @@
 [
-	{
-		"user": "ClienteB",
-		"time": "Mon Aug 01 2022 15:37:22 GMT-0300 (hora estándar de Argentina)",
-		"mensaje": "Como va?"
-	},
-	{
-		"user": "ClienteA",
-		"time": "Mon Aug 01 2022 15:37:32 GMT-0300 (hora estándar de Argentina)",
-		"mensaje": "Probando el chat"
-	},
-	{
-		"user": "ClienteB",
-		"time": "Mon Aug 01 2022 15:38:13 GMT-0300 (hora estándar de Argentina)",
-		"mensaje": "Agregaste pollo?"
-	},
-	{
-		"user": "ClienteA",
-		"time": "Mon Aug 01 2022 15:38:28 GMT-0300 (hora estándar de Argentina)",
-		"mensaje": "Si, con arroz"
-	}
+
 ]
