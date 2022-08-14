@@ -12,7 +12,7 @@ let db = knex(sqliteOptions);
 try {
     let exist = await db.schema.hasTable('products');
     if(exist){
-        // await db('products').delete();
+        // await db('products').truncate();
      console.log('existe')
     }
     else {
