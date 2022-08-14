@@ -31,7 +31,6 @@ router.get("/dbchats", async (req, res) => {
 }
 });
 
-
 router.get("/productos/:id", async (req, res) => {
   let productID = req.params.id;
   if (isNaN(productID))
@@ -56,25 +55,25 @@ try {
 } catch (error) {
   console.log(error);
 }
-
 });
 
-router.put("/productos/:id", async (req, res) => {
-  let productos = await usaContenedor.getAll();
+router.put('/productos/:id', async(req,res) => {
   let productID = req.params.id;
-  if (isNaN(productID))
-    return res.status(400).send("El id tiene que ser numerico");
   let modifiedProduct = req.body;
-  if (modifiedProduct === null)
-    return res.end('{ "error" : "producto inexistente"}');
-  // Elimino el producto original
-  await usaContenedor.deleteById(parseInt(productID));
-  // Grabo el nuevo modificado, utilizando el segundo parametro con el id original.
-  await usaContenedor.save(modifiedProduct, parseInt(productID));
-  res.send({
-    message: "Producto Modificado",
-  });
-});
+  let data = await usaContenedor.upDateProduct( productID ,modifiedProduct);
+  if (data === undefined) {
+    return res.send({
+      message: 'Error producto no mofificado'
+    })
+  }
+  else {
+    res.send({
+      message: 'Producto modificado'
+    })
+  }
+ 
+})
+
 
 router.delete('/productos/:id', async (req,res) => {
   let productID = req.params.id;

@@ -53,6 +53,16 @@ class Contenedor {
     }
   }
 
+  //
+  upDateProduct = async(productID,newProduct) => {
+    try {
+      let update = await db('products').where('id','=',productID).update(newProduct);
+      return update
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
 }
 
 export default Contenedor;

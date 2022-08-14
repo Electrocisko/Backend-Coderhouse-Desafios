@@ -1,6 +1,6 @@
 import { fileURLToPath } from "url";
 import { dirname } from "path";
-import fs from 'fs';
+import fs from "fs";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -16,18 +16,16 @@ const storage = multer.diskStorage({
   },
 });
 
-
-
-let path = __dirname+'/files/chat.txt';
+let path = __dirname + "/files/chat.txt";
 // Funcion que graba el chat en un archivo de txt.
-export const saveChat = async (chatText) =>{
+export const saveChat = async (chatText) => {
   try {
-    await fs.promises.writeFile(path,chatText);
-    console.log('guardado chat');
+    await fs.promises.writeFile(path, chatText);
+    console.log("guardado chat");
   } catch (error) {
-    console.log('error al grabar archivo',error);
+    console.log("error al grabar archivo", error);
   }
-} 
+};
 
 export const upLoader = multer({ storage });
 
