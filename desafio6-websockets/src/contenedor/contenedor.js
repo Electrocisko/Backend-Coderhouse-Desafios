@@ -1,54 +1,29 @@
 import fs from "fs";
 import __dirname from "../utils.js";
-
+import db from "../database/sqlProductsBase.js";
 let path = __dirname+'/files/productos.txt';
 
-
 class Contenedor {
-  // Metodo que devuelve todos
+  // Metodo modificado ahora lee desde base de datos
   getAll = async () => {
     try {
-      if (fs.existsSync(path)) {
-        let data = await fs.promises.readFile(path, "utf-8");
-        return JSON.parse(data);
-      } else {
-        let data = [];
-        return data;
-      }
+      let products = await db('products').select('*');
+      return products;
     } catch (error) {
-      console.log("No se pudo acceder", error);
+      console.log(error)
     }
-  };
+  }
 
   // Metodo que recibe un objeto y lo graba en el archivo.
-  //Modifique el metodo para que reciba un segundo parametro
-  //Si recibe el segundo parametro se utiliza este para darle el id.
-  save = async (objeto, idProd) => {
+  save = async (objeto) => {
     try {
-      let listaDeProductos = await this.getAll();
-      if (listaDeProductos.length === 0) {
-        objeto.id = 1;
-        listaDeProductos.push(objeto);
-        await fs.promises.writeFile(
-          path,
-          JSON.stringify(listaDeProductos, null, "\t")
-        );
-      } else {
-        // Ternario si recibe segundo parametro o no.
-        idProd === undefined
-          ? (objeto.id = listaDeProductos.length + 1)
-          : (objeto.id = idProd);
-        listaDeProductos.push(objeto);
-        await fs.promises.writeFile(
-          path,
-          JSON.stringify(listaDeProductos, null, "\t")
-        );
-      }
-      return objeto.id;
+      let id = await  db('products').insert(objeto)
+      console.log(id) // Control interno para verificar si llega correctamente el id
+      return id;
     } catch (error) {
-      console.log("no se pudo grabar", error);
+      console.log(error)
     }
-  };
+  }
 
   // Metodo que devuelve el objeto por id o null si no hay coincidencia.
   getById = async (id) => {
@@ -60,27 +35,24 @@ class Contenedor {
       return null;
     }
   };
-  // Metodo que borra todo el archivo.
+
+
   deleteAll = async () => {
-    await fs.promises.unlink(path);
-    console.log("Archivo borrado");
-  };
+  try {
+    await db('products').delete();
+  } catch (error) {
+    console.log(error)
+  }};
 
   // Metodo que borra un producto por id
   deleteById = async (id) => {
-    let objetoABorrar = await this.getById(id); // Busco el objeto por id
-    if (objetoABorrar === null) {
-      console.log("El producto no esta en la lista");
-    } else {
-      let listaDeProductos = await this.getAll(); // recupero los datos
-      let indice = await listaDeProductos.findIndex((item) => item.id === id); //Busco el indice del objeto por id
-      listaDeProductos.splice(indice, 1); // Elimino del array el objeto y actualizo el archivo
-      await fs.promises.writeFile(
-        path,
-        JSON.stringify(listaDeProductos, null, "\t")
-      );
+    try {
+      await db('products').where('id','=',id).del();
+    } catch (error) {
+      console.log(error)
     }
-  };
+  }
+
 }
 
 export default Contenedor;

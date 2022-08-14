@@ -17,8 +17,9 @@ const storage = multer.diskStorage({
 });
 
 
-// Funcion que graba el chat en un archivo de txt.
+
 let path = __dirname+'/files/chat.txt';
+// Funcion que graba el chat en un archivo de txt.
 export const saveChat = async (chatText) =>{
   try {
     await fs.promises.writeFile(path,chatText);

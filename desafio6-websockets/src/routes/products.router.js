@@ -3,9 +3,6 @@ import {upLoader} from "../utils.js";
 import Contenedor from "../contenedor/contenedor.js";
 import db from "../database/sqlProductsBase.js";
 
-
-
-
 let usaContenedor = new Contenedor();
 const router = Router();
 
@@ -36,7 +33,6 @@ router.get("/dbchats", async (req, res) => {
 
 
 router.get("/productos/:id", async (req, res) => {
-  let productos = await usaContenedor.getAll();
   let productID = req.params.id;
   if (isNaN(productID))
     return res.status(400).send("El id tiene que ser numerico");
@@ -50,26 +46,18 @@ router.get("/productos/:id", async (req, res) => {
 router.post("/productos",upLoader.single('file'), async (req, res) => {
   let newProduct = req.body;
   newProduct.thumbnail = req.file.filename;
-  let productID = await usaContenedor.save(newProduct);
- // Creo el dato que lo tomo del body para insertar en la tabla.
-let dato = [{
-  title: newProduct.title,
-  price: newProduct.price,
-  thumbnail: newProduct.thumbnail
-}]
+let dato =[{...newProduct}]
 try {
-   await db('products').insert(dato);
+  let idProd = await usaContenedor.save(dato);
+  res.send({
+    message: "Producto adherido",
+    id: idProd
+  });
 } catch (error) {
   console.log(error);
 }
-  res.send({
-    message: "Producto adherido",
-    id: productID,
-  });
+
 });
-
-
-
 
 router.put("/productos/:id", async (req, res) => {
   let productos = await usaContenedor.getAll();
@@ -88,17 +76,13 @@ router.put("/productos/:id", async (req, res) => {
   });
 });
 
-router.delete("/productos/:id", async (req, res) => {
-  let productos = await usaContenedor.getAll();
+router.delete('/productos/:id', async (req,res) => {
   let productID = req.params.id;
-  if (isNaN(productID))
-    return res.status(400).send("El id tiene que ser numerico");
-  if (productID > productos.length || productID <= 0)
-    return res.status(400).send("El parametro esta fuera de rango");
-  await usaContenedor.deleteById(parseInt(productID));
-  res.send({
-    message: "Producto Eliminado",
+  await usaContenedor.deleteById(productID)
+   res.send({
+   message: "Producto Eliminado",
   });
-});
+})
+
 
 export default router;

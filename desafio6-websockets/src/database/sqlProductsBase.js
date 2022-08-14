@@ -43,8 +43,6 @@ try {
     console.log(error)
 }
 
-
-
 export default db;
 
 

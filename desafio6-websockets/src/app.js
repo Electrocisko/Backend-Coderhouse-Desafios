@@ -43,10 +43,8 @@ server.on("Error", (error) => {
 const io = new Server(server);
 
 io.on("connection", (socket) => {
-  console.log("nuevo usuario conectado", socket.id); // Lo pongo para chequear en desarollo
   socket.on("productoNuevo", (data) => {
-    console.log(data); // Lo pongo para chequear en desarollo
-    //En realidad no uso el data, uso el callback para que ejecute leeProductos() y asi realiza un emmit actualizado
+    //En realidad  uso el callback para que ejecute leeProductos() y asi realiza un emmit actualizado
     leeProductos().then((mostrar) => {
       io.sockets.emit("listaProduct", mostrar);
     });
@@ -60,12 +58,12 @@ io.on("connection", (socket) => {
     mensajesChat.push(texto);
     io.sockets.emit('chat',mensajesChat);
     try {
-      await db('chats').insert(mensajesChat);
+      await db('chats').insert(texto);
       console.log('database chat actualizado');
    } catch (error) {
      console.log(error);
    }
-    saveChat(JSON.stringify(mensajesChat, null, "\t")); // saveChat Graba el chat , la funcion esta en utils.js
+    //saveChat(JSON.stringify(mensajesChat, null, "\t")); // saveChat Graba el chat , la funcion esta en utils.js
   })
 });
 
