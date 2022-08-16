@@ -3,7 +3,7 @@ import knex from 'knex';
 const sqliteOptions = {
     client: 'sqlite3',
     connection: {
-        filename: './src/database/ecommerce_products.sqlite'
+        filename: './src/database/ecommerce.sqlite'
     },
     useNullAsDefault: true
 };

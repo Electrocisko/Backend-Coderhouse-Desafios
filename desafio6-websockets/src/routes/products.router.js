@@ -1,7 +1,7 @@
 import { Router } from "express";
 import {upLoader} from "../utils.js";
 import Contenedor from "../contenedor/contenedor.js";
-import db from "../database/sqlProductsBase.js";
+import db from "../database/sqlite3.js";
 
 let usaContenedor = new Contenedor();
 const router = Router();

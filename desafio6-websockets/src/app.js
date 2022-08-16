@@ -5,7 +5,7 @@ import handlebars from "express-handlebars";
 import viewsRouter from "./routes/views.router.js";
 import __dirname, { saveChat } from "./utils.js";
 import { Server } from "socket.io";
-import db from "./database/sqlProductsBase.js";
+import db from "./database/sqlite3.js";
 
 
 let usaDatosContenedor = new Contenedor();
