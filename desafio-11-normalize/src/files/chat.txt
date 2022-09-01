@@ -1,0 +1,7 @@
+[
+	{
+		"user": "Zuchi",
+		"time": "Thu Sep 01 2022 14:24:41 GMT-0300 (hora estándar de Argentina)",
+		"mensaje": "Probando el chat"
+	}
+]

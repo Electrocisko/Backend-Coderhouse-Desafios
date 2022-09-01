@@ -1,0 +1,32 @@
+<br />
+<a href="http://localhost:8080/nuevoProducto" class="fs-6">Ingreso de producto
+  nuevo</a>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col" class="fs-6"># ID</th>
+      <th scope="col" class="fs-6">Producto</th>
+      <th scope="col" class="fs-6">Precio $</th>
+      <th scope="col" class="fs-6">Imagen</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each products}}
+      <tr>
+        <th scope="row" class="align-middle fs-6">{{id}} </th>
+        <td class="align-middle fs-6">{{title}}</td>
+        <td class="align-middle fs-6">{{price}}</td>
+        <td><img
+            src="http://localhost:8080/img/{{thumbnail}}"
+            width="35px"
+          /></td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
+<br>
+
+</div>
+
+<script src="js/products.js"></script>
