@@ -11,8 +11,9 @@ import mongoose from 'mongoose';
 import authorsService from './database/modelsMongoo/authors.js';
 
 const URL = 'mongodb://127.0.0.1:27017/ecommerce1';
+const URL_MONGO = 'mongodb+srv://zuchi:xkT3ZDTSXyDv4hB@cluster0.rvl2uyz.mongodb.net/ecomercceA?retryWrites=true&w=majority'
 
-mongoose.connect(URL, err => {
+mongoose.connect(URL_MONGO, err => {
   if(err){
     console.log(err)
   } else {
@@ -23,15 +24,15 @@ mongoose.connect(URL, err => {
 
 const process = async () => {
 
-// let newAuthor = [{ "email":"Jackson_Kertzmann@hotmail.com","nombre":"Trever","apellido":"Steuber","edad":"37","alias":"Guadalupe29","avatar":"https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/642.jpg"},{"email":"Elias.Mills@hotmail.com","nombre":"Christian","apellido":"Hodkiewicz","edad":"63","alias":"Winston80","avatar":"https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/241.jpg"},{"email":"Maria37@hotmail.com","nombre":"Terence","apellido":"Hackett","edad":"42","alias":"Elenor90","avatar":"https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/194.jpg"},{"email":"Reagan_Kris52@hotmail.com","nombre":"Anissa","apellido":"Batz","edad":"46","alias":"Concepcion_Schowalter","avatar":"https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/293.jpg"},{"email":"Crawford_Veum61@hotmail.com","nombre":"Roosevelt","apellido":"Kub","edad":"74","alias":"Rosie.Leffler","avatar":"https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/195.jpg"
-// }]
+let newAuthor = [{ "email":"Jackson_Kertzmann@hotmail.com","nombre":"Trever","apellido":"Steuber","edad":"37","alias":"Guadalupe29","avatar":"https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/642.jpg"},{"email":"Elias.Mills@hotmail.com","nombre":"Christian","apellido":"Hodkiewicz","edad":"63","alias":"Winston80","avatar":"https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/241.jpg"},{"email":"Maria37@hotmail.com","nombre":"Terence","apellido":"Hackett","edad":"42","alias":"Elenor90","avatar":"https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/194.jpg"},{"email":"Reagan_Kris52@hotmail.com","nombre":"Anissa","apellido":"Batz","edad":"46","alias":"Concepcion_Schowalter","avatar":"https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/293.jpg"},{"email":"Crawford_Veum61@hotmail.com","nombre":"Roosevelt","apellido":"Kub","edad":"74","alias":"Rosie.Leffler","avatar":"https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/195.jpg"
+}]
 
-// let result = await authorsService.insertMany(newAuthor);
-// console.log(result);
+let result = await authorsService.insertMany(newAuthor);
+console.log(result);
 
-let authors = await authorsService.find();
+let authors = await authorsService.find({},{'email':1, '_id':0});
 console.log('authors from mongo',authors);
-  mongoose.disconnect();
+  //mongoose.disconnect();
 } 
 
 process();
