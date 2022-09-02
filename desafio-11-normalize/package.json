@@ -5,6 +5,7 @@
     "knex": "^2.2.0",
     "knexx": "^0.14.2",
     "luxon": "^3.0.1",
+    "mongoose": "^6.5.4",
     "multer": "^1.4.5-lts.1",
     "socket.io": "^4.5.1",
     "sqlite3": "^5.0.11"
