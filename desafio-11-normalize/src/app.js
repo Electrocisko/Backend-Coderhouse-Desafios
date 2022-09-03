@@ -6,7 +6,7 @@ import viewsRouter from "./routes/views.router.js";
 import __dirname, { saveChat } from "./utils.js";
 import { Server } from "socket.io";
 import db from "./database/sqlite3.js";
-import {saveChatDB , conectMongo} from './database/servicesMongdb/servicesMongodb.js'
+import {saveChatDB , conectMongo, getIdAuthor} from './database/servicesMongdb/servicesMongodb.js'
 
 conectMongo();
 
@@ -60,7 +60,18 @@ io.on("connection", (socket) => {
   socket.on('mensaje', async (texto) => {
     try {
       //await db('chats').insert(texto); //ACA ACTUALIZO LA BASE DE DATOS
-      await saveChatDB(texto) // Graba en mongo atlas
+   let autor = texto.author;
+   let msj = texto.text;
+      let id = await  getIdAuthor(autor);
+      console.log('autor',autor);
+      console.log('msj',msj);
+      console.log('id',id);
+      let result = ({
+        author: id,
+        text: msj
+      })
+    
+      await saveChatDB(result) // Graba en mongo atlas
    } catch (error) {
      console.log(error);
    }

@@ -1,14 +1,6 @@
 [
 	{
-		"author": "63127ed7d964b9e19e41df11",
-		"text": "Hola, Agregaste pollo?"
-	},
-	{
-		"author": "63127ed7d964b9e19e41df11",
-		"text": "Este es un mensaje"
-	},
-	{
-		"author": "63127ed7d964b9e19e41df11",
-		"text": "Como va?"
+		"author": "Crawford_Veum61@hotmail.com",
+		"text": "mensaje de cacho"
 	}
 ]

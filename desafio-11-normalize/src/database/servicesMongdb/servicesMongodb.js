@@ -26,11 +26,15 @@ process();
 export const saveChatDB = async (data) => {
   let mensajes = await chatService.create(data)
   let chats = await chatService.find().populate('author');
-  console.log('savechat',data)
-  console.log('muestro chats', chats)
+  console.log(chats)
 }
 
 export const muestroChats = async () => {
   let chats = await chatService.find();
-  console.log('muestro chats', chats)
+};
+
+export const getIdAuthor = async(data) => {
+  let result = await authorsService.find({'email':data}) 
+  let objectid = result[0]._id;
+  return objectid
 }
