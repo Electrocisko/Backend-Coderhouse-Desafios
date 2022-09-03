@@ -17,7 +17,7 @@ export const conectMongo = async () =>{
 
 
 const process = async () => {
-let authors = await authorsService.find({},{'email':1, '_id':0});
+let authors = await authorsService.find({},{'email':1});
 console.log('authors from mongo',authors);
   //mongoose.disconnect();
 } 
@@ -25,5 +25,12 @@ process();
 
 export const saveChatDB = async (data) => {
   let mensajes = await chatService.create(data)
+  let chats = await chatService.find().populate('author');
   console.log('savechat',data)
+  console.log('muestro chats', chats)
+}
+
+export const muestroChats = async () => {
+  let chats = await chatService.find();
+  console.log('muestro chats', chats)
 }

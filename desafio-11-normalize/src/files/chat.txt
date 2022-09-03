@@ -1,14 +1,14 @@
 [
 	{
-		"author": "JUan@hotmail.com",
-		"text": "Probando el chat"
-	},
-	{
-		"author": "JUan@hotmail.com",
+		"author": "63127ed7d964b9e19e41df11",
 		"text": "Hola, Agregaste pollo?"
 	},
 	{
-		"author": "JUan@hotmail.com",
+		"author": "63127ed7d964b9e19e41df11",
+		"text": "Este es un mensaje"
+	},
+	{
+		"author": "63127ed7d964b9e19e41df11",
 		"text": "Como va?"
 	}
 ]
