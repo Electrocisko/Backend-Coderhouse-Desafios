@@ -1,4 +1,8 @@
 const socket = io();
+//import {saveChatDB} from '../../database/servicesMongdb/servicesMongodb.js'
+
+
+
 
 const productForm = document.getElementById("productForm");
 
@@ -43,7 +47,7 @@ function renderChat(data) {
   const html = data
     .map((elem, index) => {
       return `<div>
-     <strong> ${elem.user}:</strong> ${elem.time} <strong>${elem.mensaje}</strong>
+     <strong> ${elem.author}:</strong>  <strong>${elem.text}</strong>
       </div>`;
     })
     .join(" ");
@@ -76,9 +80,8 @@ chat.addEventListener("submit", (evt) => {
   let dato = document.getElementById("textChat");
   if (dato.value.trim().length > 0) {
     socket.emit("mensaje", {
-      user: userNick,
-      time: time,
-      mensaje: dato.value,
+      author: userNick,
+      text: dato.value,
     });
     dato.value = "";
   }

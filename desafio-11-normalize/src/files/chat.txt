@@ -1,17 +1,14 @@
 [
 	{
-		"user": "pepe@gmail.com",
-		"time": "Fri Sep 02 2022 13:51:30 GMT-0300 (hora estándar de Argentina)",
-		"mensaje": "Como va?"
+		"author": "JUan@hotmail.com",
+		"text": "Probando el chat"
 	},
 	{
-		"user": "pepe@gmail.com",
-		"time": "Fri Sep 02 2022 13:51:33 GMT-0300 (hora estándar de Argentina)",
-		"mensaje": "Este es un mensaje"
+		"author": "JUan@hotmail.com",
+		"text": "Hola, Agregaste pollo?"
 	},
 	{
-		"user": "pepe@gmail.com",
-		"time": "Fri Sep 02 2022 13:51:37 GMT-0300 (hora estándar de Argentina)",
-		"mensaje": "Probando el chat"
+		"author": "JUan@hotmail.com",
+		"text": "Como va?"
 	}
 ]
