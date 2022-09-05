@@ -11,5 +11,4 @@ const chatSchema = new mongoose.Schema({
 });
 
 const chatService = mongoose.model(chatCollection,chatSchema);
-
 export default chatService;

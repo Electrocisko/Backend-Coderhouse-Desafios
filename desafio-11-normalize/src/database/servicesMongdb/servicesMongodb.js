@@ -18,23 +18,24 @@ export const conectMongo = async () =>{
 
 const process = async () => {
 let authors = await authorsService.find({},{'email':1});
-console.log('authors from mongo',authors);
   //mongoose.disconnect();
 } 
 process();
 
 export const saveChatDB = async (data) => {
   let mensajes = await chatService.create(data)
-  let chats = await chatService.find().populate('author');
-  console.log(chats)
+  let chats = await chatService.find().populate('author')
+  return (mensajes,chats)
 }
 
 export const muestroChats = async () => {
   let chats = await chatService.find();
+  return chats
 };
 
 export const getIdAuthor = async(data) => {
   let result = await authorsService.find({'email':data}) 
+  if (result.length === 0) return '63127ed7d964b9e19e41df0d'
   let objectid = result[0]._id;
   return objectid
 }
