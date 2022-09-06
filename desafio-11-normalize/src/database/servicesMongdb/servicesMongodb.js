@@ -1,9 +1,11 @@
 import mongoose from 'mongoose';
 import authorsService from '../modelsMongoo/authors.js';
 import chatService from "../modelsMongoo/chats.js";
-
+import {normalize, schema} from 'normalizr';
 const URL = 'mongodb://127.0.0.1:27017/ecommerce1';
 const URL_MONGO = 'mongodb+srv://zuchi:xkT3ZDTSXyDv4hB@cluster0.rvl2uyz.mongodb.net/ecomercceA?retryWrites=true&w=majority'
+
+let mensajes=[];
 
 export const conectMongo = async () =>{
   mongoose.connect(URL_MONGO, err => {
@@ -15,7 +17,6 @@ export const conectMongo = async () =>{
   })
 }
 
-
 const process = async () => {
 let authors = await authorsService.find({},{'email':1});
   //mongoose.disconnect();
@@ -24,8 +25,7 @@ process();
 
 export const saveChatDB = async (data) => {
   let mensajes = await chatService.create(data)
-  let chats = await chatService.find().populate('author')
-  return (mensajes,chats)
+  return (mensajes)
 }
 
 export const muestroChats = async () => {
@@ -39,3 +39,22 @@ export const getIdAuthor = async(data) => {
   let objectid = result[0]._id;
   return objectid
 }
+
+export const chatsNormalized = async () => {
+  let chats = await muestroChats();
+  let mensajes = {
+    id: '1000',
+    mensajes: chats
+  }
+///NORMALIZE
+const authorSchema = new schema.Entity('authors');
+const mensajeSchema = new schema.Entity('mensajes', {
+  author: authorSchema,
+});
+const blogSchema = new schema.Entity('post',{
+  mensajes: [mensajeSchema]
+});
+const normalizedData = normalize(mensajes,blogSchema);
+
+return normalizedData
+};
