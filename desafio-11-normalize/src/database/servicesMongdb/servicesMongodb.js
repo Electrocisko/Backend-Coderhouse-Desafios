@@ -29,7 +29,7 @@ export const saveChatDB = async (data) => {
 }
 
 export const muestroChats = async () => {
-  let chats = await chatService.find();
+  let chats = await chatService.find().populate('author');
   return chats
 };
 

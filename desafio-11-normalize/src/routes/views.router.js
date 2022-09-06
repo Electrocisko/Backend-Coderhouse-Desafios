@@ -1,6 +1,7 @@
 import { Router } from "express";
 import Contenedor from "../contenedor/contenedor.js";
 import {productos} from '../Mocks/faker.js'
+import {muestroChats} from '../database/servicesMongdb/servicesMongodb.js'
 
 
 let usaContenedor = new Contenedor();
@@ -23,6 +24,16 @@ router.get('/nuevoProducto', (req,res )=> {
 
 router.get('/productos-test', (req,res) => {
   res.send(productos)
+})
+
+
+router.get('/chats',async (req,res) => {
+  let result = await muestroChats()
+  let mensajes = {
+    id: 'mensajes',
+    mensajes: [result]
+  }
+  res.send(mensajes)
 })
 
 
