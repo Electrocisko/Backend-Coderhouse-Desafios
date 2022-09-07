@@ -43,15 +43,16 @@ export const chatsNormalized = async () => {
   };
 
   ///NORMALIZE
-  const authorSchema = new schema.Entity("authors");
+  const authorSchema = new schema.Entity("authors",{},{ idAttribute: '_id'}
+  );
 
   const mensajeSchema = new schema.Entity("mensajes",
-   { author: authorSchema }
+   { author: authorSchema },{},{idAttribute: '_id'}
    );
 
   const blogSchema = new schema.Entity("post",{ 
     mensajes: [mensajeSchema]
-   });
+  },{},{idAttribute:'_id'});
 
   const normalizedData = normalize(mensajes, blogSchema);
 
