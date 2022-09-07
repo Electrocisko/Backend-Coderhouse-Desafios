@@ -1,22 +1,6 @@
 [
 	{
-		"author": "pepe",
-		"text": "Este es un mensaje"
-	},
-	{
-		"author": "pepe",
-		"text": "Como va?"
-	},
-	{
-		"author": "pepe",
-		"text": "Probando el chat"
-	},
-	{
-		"author": "Crawford_Veum61@hotmail.com",
-		"text": "yo tengo login"
-	},
-	{
-		"author": "Crawford_Veum61@hotmail.com",
-		"text": "estoy registrado"
+		"author": "Elias.Mills@hotmail.com",
+		"text": "MensajeDB2"
 	}
 ]
