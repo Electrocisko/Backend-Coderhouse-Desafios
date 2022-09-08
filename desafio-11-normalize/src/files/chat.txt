@@ -1,6 +1,6 @@
 [
 	{
-		"author": "Elias.Mills@hotmail.com",
-		"text": "MensajeDB2"
+		"author": "Crawford_Veum61@hotmail.com",
+		"text": "Mensaje para ver si graba en mongo"
 	}
 ]

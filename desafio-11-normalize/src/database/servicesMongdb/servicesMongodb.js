@@ -39,9 +39,7 @@ export const getIdAuthor = async (data) => {
 export const chatsNormalized = async () => {
 
   let chats = await muestroChats();
-
   let mensajesId = reemplaceId(chats)
-
   let mensajes = {
     id: "mensajes",
     mensajes: mensajesId,
