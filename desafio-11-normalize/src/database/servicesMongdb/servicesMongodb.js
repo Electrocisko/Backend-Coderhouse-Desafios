@@ -2,6 +2,7 @@ import mongoose from "mongoose";
 import authorsService from "../modelsMongoo/authors.js";
 import chatService from "../modelsMongoo/chats.js";
 import { normalize, schema } from "normalizr";
+import {reemplaceId} from '../../utils.js'
 const URL = "mongodb://127.0.0.1:27017/ecommerce1";
 const URL_MONGO =
   "mongodb+srv://zuchi:xkT3ZDTSXyDv4hB@cluster0.rvl2uyz.mongodb.net/ecomercceA?retryWrites=true&w=majority";
@@ -36,25 +37,26 @@ export const getIdAuthor = async (data) => {
 };
 
 export const chatsNormalized = async () => {
+
   let chats = await muestroChats();
+
+  let mensajesId = reemplaceId(chats)
+
   let mensajes = {
     id: "mensajes",
-    mensajes: chats,
+    mensajes: mensajesId,
   };
-
   ///NORMALIZE
-  const authorSchema = new schema.Entity("authors",{},{ idAttribute: '_id'}
-  );
-
+  const authorSchema = new schema.Entity("authors");
   const mensajeSchema = new schema.Entity("mensajes",
-   { author: authorSchema },{},{idAttribute: '_id'}
+   { author: authorSchema }
    );
-
   const blogSchema = new schema.Entity("post",{ 
     mensajes: [mensajeSchema]
-  },{},{idAttribute:'_id'});
-
+  });
   const normalizedData = normalize(mensajes, blogSchema);
 
+
+//return mensajesId
   return normalizedData;
 };
