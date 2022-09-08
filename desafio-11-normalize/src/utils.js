@@ -28,33 +28,32 @@ export const saveChat = async (chatText) => {
     console.log("error al grabar archivo", error);
   }
 };
-let chatid;
-let aux = {
-  id: 1,
-  author: 'author',
-  text: 'texto'
-}
+let aux;
+let copyAuthor;
 let lista = [];
 
 export const reemplaceId = (chats) => {
   for (let i=1;i<chats.length;i++){
-    console.log(chats[i]);
+    console.log(chats[i].author);
+    copyAuthor = {
+      id: chats[i]._id.toString(),
+      email: chats[i].email,
+      nombre: chats[i].nombre,
+      apellido: chats[i].apellido,
+      edad: chats[i].edad,
+      alias: chats[i].alias,
+      avatar: chats[i].avatar
+    }
+
     aux = {
       id: chats[i]._id.toString(),
-      author: chats[i].author,
+      author: copyAuthor,
       text: chats[i].text
     }
 lista.push(aux)
   }
   return lista
 }
-
-// chatid = chats[i];
-// aux = chatid._id.toString();
-// chatid.id = aux;
-// delete chatid._id;
-// console.log(chatid)
-
 
 export const upLoader = multer({ storage });
 
