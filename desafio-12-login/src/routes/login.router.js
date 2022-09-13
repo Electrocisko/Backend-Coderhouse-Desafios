@@ -1,35 +1,28 @@
 import { Router } from "express";
+import mongoose from "mongoose";
+import MongoUsers from "../dao/mongoDao/MongoUsers.js";
 import session from 'express-session';
 import MongoStore from 'connect-mongo';
 
 const router = Router();
 
-router.post('/login',(req,res)=>{
+const userService = new MongoUsers();
+const connection = mongoose.connect('mongodb+srv://zuchi:xkT3ZDTSXyDv4hB@cluster0.rvl2uyz.mongodb.net/session23?retryWrites=true&w=majority')
+
+router.post('/login',async(req,res)=>{
+try {
     const {email} = req.body;
-    if (email === 'ezequielguillermoz@gmail.com'){
-       req.session = {
-        email: email
-       }
-        return res.send({message: 'Logeado'})
-    }
-    else {
-        res.send({message: 'Credencial no valido'})
-    }
-    
+    if (!email) return res.status(400).send({status: 'error', error: 'Incomplete values'});
+    let user = await userService.getByMail(email);
+    if (!user) return res.status(400).send({message: 'User non exist'});
+   req.session.user = {
+       email : user.email,
+       name: user.name
+   }
+   res.send({status:'succes', payload: req.session.user})
+} catch (error) {
+    console.log('error en post',error)
+}
 })
 
 export default router;
-
-// app.post('/login', (req,res) => {
-//     const {email, password} = req.body;
-//     if (email === 'correo' && password==='123'){
-//         req.session.user={
-//             email,
-//             role:'user'
-//         }
-//         return res.send('Logeado')
-//     }
-//     else {
-//         res.send('credenciales no validos')
-//     }
-// });

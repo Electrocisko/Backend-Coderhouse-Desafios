@@ -15,7 +15,7 @@ router.get("/productos", async (req, res) => {
   });
 
 router.get('/nuevoProducto', (req,res )=> {
-  res.render('newProduct');
+  res.render('newProduct',{user:req.session.user});
 });
 
 router.get('/login', (req,res) => {
