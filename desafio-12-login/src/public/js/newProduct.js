@@ -14,3 +14,10 @@ productForm.addEventListener("submit", (e) => {
   alert("Agregado");
   productForm.reset();
 });
+
+const logout = document.getElementById('logout');
+
+logout.addEventListener('click',(evt) => {
+  evt.preventDefault();
+  console.log('logout')
+})

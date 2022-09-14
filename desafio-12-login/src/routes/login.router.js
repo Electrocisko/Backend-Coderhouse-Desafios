@@ -14,7 +14,7 @@ try {
     const {email} = req.body;
     if (!email) return res.status(400).send({status: 'error', error: 'Incomplete values'});
     let user = await userService.getByMail(email);
-    if (!user) return res.status(400).send({message: 'User non exist'});
+    if (!user) return res.status(400).send({status: 'error', error: 'User non exists'});
    req.session.user = {
        email : user.email,
        name: user.name
@@ -24,5 +24,14 @@ try {
     console.log('error en post',error)
 }
 })
+
+router.get('/logout',async(req,res) => {
+    req.session.destroy( err => {
+        if(!err) res.send('Logout OK')
+        else res.send({status: 'Logout Error', body: err})
+    })
+})
+
+
 
 export default router;

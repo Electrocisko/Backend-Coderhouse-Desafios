@@ -15,6 +15,7 @@ router.get("/productos", async (req, res) => {
   });
 
 router.get('/nuevoProducto', (req,res )=> {
+  if(!req.session.user) return res.redirect('/login');
   res.render('newProduct',{user:req.session.user});
 });
 
