@@ -3,7 +3,9 @@ const form = document.getElementById("loginForm");
 
  const succes = (data) => {
     if (data.status === 'error') {alert('Usuario no valido')}
-    else alert(`Bienvenido ${data.payload.name}`);
+    else {
+    window.location.assign("http://localhost:8080/nuevoProducto");
+    }
  }
 
 form.addEventListener("submit", (evt) => {

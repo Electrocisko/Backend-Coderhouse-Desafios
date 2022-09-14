@@ -1,8 +1,7 @@
 import { Router } from "express";
 import mongoose from "mongoose";
 import MongoUsers from "../dao/mongoDao/MongoUsers.js";
-import session from 'express-session';
-import MongoStore from 'connect-mongo';
+
 
 const router = Router();
 
@@ -27,9 +26,9 @@ try {
 
 router.get('/logout',async(req,res) => {
     req.session.destroy( err => {
-        if(!err) res.send('Logout OK')
+        if(!err)  res.redirect('/login');
         else res.send({status: 'Logout Error', body: err})
-    })
+    });
 })
 
 

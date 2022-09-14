@@ -2,8 +2,6 @@ import { Router } from "express";
 import {upLoader} from "../utils.js";
 import Contenedor from "../contenedor/contenedor.js";
 
-
-
 let usaContenedor = new Contenedor();
 const router = Router();
 
