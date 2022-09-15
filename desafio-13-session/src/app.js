@@ -7,7 +7,8 @@ import loginRouter from './routes/login.router.js';
 import __dirname from "./utils.js";
 import session from "express-session";
 import MongoStore from "connect-mongo";
-
+import initializePassport from "./config/passport.config.js";
+import passport from "passport";
 
 //const connection = mongoose.connect('mongodb+srv://zuchi:xkT3ZDTSXyDv4hB@cluster0.rvl2uyz.mongodb.net/session23?retryWrites=true&w=majority')
 
@@ -26,7 +27,11 @@ app.use(session({
   }),
   resave: false,
   saveUninitialized: false,
-}))
+}));
+initializePassport();
+app.use(passport.initialize());
+app.use(passport.session());
+
 app.use('/', express.static(__dirname + '/public'));
 app.use('/',viewsRouter);
 app.use('/api',loginRouter);

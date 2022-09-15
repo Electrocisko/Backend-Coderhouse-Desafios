@@ -2,6 +2,7 @@ import { Router } from "express";
 import mongoose from "mongoose";
 import MongoUsers from "../dao/mongoDao/MongoUsers.js";
 import { createHash , isValidPassword } from '../utils.js';
+import passport from "passport";
 
 const router = Router();
 
@@ -33,20 +34,10 @@ router.get('/logout',async(req,res) => {
 })
 
 
-router.post('/register', async (req,res) => {
+router.post('/register', passport.authenticate('register', {failureRedirect: '/'}), async (req,res) => {
     try {
-        const {name, email, password} = req.body;
-        if(!name || !email || !password) return res.status(400).send('Incomplete values');
-        const exists = await userService.getByMail(email);
-        if (exists) return res.status(400).send({status: 'error', error:"Usuario ya registrado"});
-        let user = {
-            name: name,
-            email: email,
-            password: createHash(password)
-        }
-        let result = await userService.save(user)
-        res.send({message: 'succes', payload: result})
-
+        console.log(req.user)
+        res.send({message: 'succes', payload: req.user._id})
     } catch (error) {
         console.log('error',error)
     }
