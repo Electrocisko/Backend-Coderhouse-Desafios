@@ -15,9 +15,5 @@ productForm.addEventListener("submit", (e) => {
   productForm.reset();
 });
 
-const logout = document.getElementById('logout');
 
-logout.addEventListener('click',(evt) => {
-  evt.preventDefault();
-  console.log('logout')
-})
+

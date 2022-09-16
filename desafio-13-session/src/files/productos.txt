@@ -40,5 +40,14 @@
 		"price": "567",
 		"thumbnail": "1658752540090-aderezo.png",
 		"id": 7
+	},
+	{
+		"title": "Titulo",
+		"description": "Descripcion",
+		"code": "Codigo",
+		"price": "22",
+		"stock": "11",
+		"thumbnail": "1663361422606-azulejo-vermeer.jpg",
+		"id": 8
 	}
 ]

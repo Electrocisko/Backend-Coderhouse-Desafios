@@ -1,9 +1,11 @@
 import { Router } from "express";
 import {upLoader} from "../utils.js";
 import Contenedor from "../contenedor/contenedor.js";
+import MongoProducts from '../dao/mongoDao/MongoProducts.js'
 
 let usaContenedor = new Contenedor();
 const router = Router();
+const productsService = new MongoProducts();
 
 router.get("/productos", async (req, res) => {
   let productos = JSON.stringify(await usaContenedor.getAll());
@@ -23,13 +25,18 @@ router.get("/productos/:id", async (req, res) => {
 });
 
 router.post("/productos",upLoader.single('file'), async (req, res) => {
+try {
   let newProduct = req.body;
   newProduct.thumbnail = req.file.filename;
-  let productID = await usaContenedor.save(newProduct);
+  let result = await productsService.save(newProduct);
   res.send({
     message: "Producto adherido",
-    id: productID,
+    code: result.code,
+    id: result._id
   });
+} catch (error) {
+  console.log('Error', error)
+}
 });
 
 router.put("/productos/:id", async (req, res) => {
