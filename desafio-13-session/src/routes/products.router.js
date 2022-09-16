@@ -8,8 +8,13 @@ const router = Router();
 const productsService = new MongoProducts();
 
 router.get("/productos", async (req, res) => {
-  let productos = JSON.stringify(await usaContenedor.getAll());
-  res.end(productos);
+try {
+  let productos = await productsService.getAll();
+  let result = JSON.stringify(productos)
+  res.end(result);
+} catch (error) {
+  console.log('Error',error)
+}
 });
 
 router.get("/productos/:id", async (req, res) => {

@@ -10,7 +10,7 @@ export default class MongoDBContainer {
   }
 
   getAll = async () => {
-    let result = await this.model.find();
+    let result = await this.model.find().lean();
     return result;
   };
 

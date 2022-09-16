@@ -1,7 +1,12 @@
 import { Router } from "express";
+import MongoProducts from "../dao/mongoDao/MongoProducts.js";
+
 import Contenedor from "../contenedor/contenedor.js";
 
 let usaContenedor = new Contenedor();
+const userService = new MongoProducts(); 
+
+
 
 const router = Router();
 
@@ -10,7 +15,7 @@ router.get('/',(req,res) => {
 })
 
 router.get("/productos", async (req, res) => {
-    let products = await usaContenedor.getAll();
+    let products = await userService.getAll();
     res.render('products',{products});
   });
 
@@ -26,6 +31,5 @@ router.get('/login', (req,res) => {
 router.get('/register',(req,res) => {
   res.render('register');
 })
-
 
 export default router;
