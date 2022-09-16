@@ -44,7 +44,6 @@ export const reemplaceId = (chats) => {
       alias: chats[i].alias,
       avatar: chats[i].avatar
     }
-
     aux = {
       id: chats[i]._id.toString(),
       author: copyAuthor,
