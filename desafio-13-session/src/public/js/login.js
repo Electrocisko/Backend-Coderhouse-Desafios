@@ -2,6 +2,7 @@ const form = document.getElementById("loginForm");
 
 
  const succes = (data) => {
+  console.log('login.js',data)
     if (data.status === 'error') {alert('Usuario no valido')}
     else {
     window.location.assign("http://localhost:8080/nuevoProducto");
@@ -23,7 +24,7 @@ form.addEventListener("submit", (evt) => {
     .then((result) => result.json())
     .then(json => succes(json))
     .catch((error) => {
-      console.log(`Error en peticion fetch: ${error}`);
+      console.log(`Error en peticion login.js fetch: ${error}`);
     });
   form.reset();
 });
