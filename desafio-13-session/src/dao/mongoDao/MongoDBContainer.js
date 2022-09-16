@@ -29,4 +29,26 @@ export default class MongoDBContainer {
     }
     return result;
   };
+
+  deleteById = async (id) => {
+    let result = false;
+    if (!ObjectId.isValid(id)) {
+      return result;
+    }
+    let deleted = await this.model.deleteOne({ _id: id });
+    deleted.deletedCount === 0 ? (result = false) : (result = true);
+    return result;
+  };
+
+  update = async (id,modifiedProduct) => {
+    let result = false;
+    if (!ObjectId.isValid(id)) {
+      return result;
+    }
+   let modi = await this.model.updateOne(
+      { _id: id },
+      { $set: modifiedProduct }
+    );
+    return modi;
+  };
 }
