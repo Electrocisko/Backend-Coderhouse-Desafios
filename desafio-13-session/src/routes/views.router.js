@@ -12,7 +12,7 @@ const router = Router();
 
 router.get('/',(req,res) => {
   res.render('inicio')
-})
+});
 
 router.get("/productos", async (req, res) => {
     let products = await userService.getAll();
@@ -26,10 +26,18 @@ router.get('/nuevoProducto', (req,res )=> {
 
 router.get('/login', (req,res) => {
   res.render('login');
-})
+});
 
 router.get('/register',(req,res) => {
   res.render('register');
-})
+});
+
+router.get('/errorlogin',(req,res) => {
+  res.render('errorLogin')
+});
+
+router.get('/errorregister',(req,res) => {
+  res.render('errorRegister')
+});
 
 export default router;
