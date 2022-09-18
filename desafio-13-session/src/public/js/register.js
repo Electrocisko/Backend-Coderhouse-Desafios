@@ -1,9 +1,8 @@
 let form = document.getElementById("registerForm");
 
 const succes = (data) => {
-  console.log("register.js", data);
   if (data.status === "error") {
-    alert("Usuario registrado o datos incompletos");
+    window.location.assign("http://localhost:8080/errorregister");
   } else {
     window.location.assign("http://localhost:8080/nuevoProducto");
   }
