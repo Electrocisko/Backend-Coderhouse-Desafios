@@ -5,7 +5,7 @@ import { normalize, schema } from "normalizr";
 import {reemplaceId} from '../../utils.js'
 const URL = "mongodb://127.0.0.1:27017/ecommerce1";
 const URL_MONGO =
-  "mongodb+srv://zuchi:xkT3ZDTSXyDv4hB@cluster0.rvl2uyz.mongodb.net/ecomercceA?retryWrites=true&w=majority";
+  "mongodb+srv://zuchi:<password>@cluster0.rvl2uyz.mongodb.net/ecomercceA?retryWrites=true&w=majority";
 
 let mensajes = [];
 

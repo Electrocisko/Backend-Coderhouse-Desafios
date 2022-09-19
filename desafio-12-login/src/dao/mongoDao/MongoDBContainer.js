@@ -4,7 +4,7 @@ import { ObjectId } from "mongodb";
 export default class MongoDBContainer {
   constructor(collection, schema) {
     mongoose.connect(
-      "mongodb+srv://zuchi:xkT3ZDTSXyDv4hB@cluster0.rvl2uyz.mongodb.net/session23?retryWrites=true&w=majority"
+      "mongodb+srv://zuchi:<password>@cluster0.rvl2uyz.mongodb.net/session23?retryWrites=true&w=majority"
     );
     this.model = mongoose.model(collection,schema);
   }
