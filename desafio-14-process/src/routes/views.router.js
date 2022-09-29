@@ -6,8 +6,6 @@ import Contenedor from "../contenedor/contenedor.js";
 let usaContenedor = new Contenedor();
 const userService = new MongoProducts(); 
 
-
-
 const router = Router();
 
 router.get('/',(req,res) => {

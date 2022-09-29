@@ -1,13 +1,14 @@
 import mongoose from "mongoose";
 import { ObjectId } from "mongodb";
+import dotenvConfig from "../../config/dotenv.config.js";
 
- const claveMongoDb = 'xkT3ZDTSXyDv4hB';
+ const MONGO_URL = dotenvConfig.mongo.MONGO_URL;
+
+ console.log('first', MONGO_URL)
 
 export default class MongoDBContainer {
   constructor(collection, schema) {
-    mongoose.connect(
-      `mongodb+srv://zuchi:${claveMongoDb}@cluster0.rvl2uyz.mongodb.net/session23?retryWrites=true&w=majority`
-    );
+    mongoose.connect(MONGO_URL);
     this.model = mongoose.model(collection,schema);
   }
 

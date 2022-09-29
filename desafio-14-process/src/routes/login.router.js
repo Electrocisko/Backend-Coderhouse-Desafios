@@ -6,7 +6,7 @@ import passport from "passport";
 const router = Router();
 
 const userService = new MongoUsers();
-const connection = mongoose.connect('mongodb+srv://zuchi:xkT3ZDTSXyDv4hB@cluster0.rvl2uyz.mongodb.net/session23?retryWrites=true&w=majority')
+//const connection = mongoose.connect('mongodb+srv://zuchi:xkT3ZDTSXyDv4hB@cluster0.rvl2uyz.mongodb.net/session23?retryWrites=true&w=majority')
 
 router.post('/login', passport.authenticate('login',{failureRedirect:'/api/loginfail'}) ,async(req,res)=>{
 try {
