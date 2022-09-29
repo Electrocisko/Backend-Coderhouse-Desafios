@@ -1,0 +1,53 @@
+import express from "express";
+import productsRouter from "./routes/products.router.js";
+import handlebars from "express-handlebars";
+import viewsRouter from './routes/views.router.js';
+import loginRouter from './routes/login.router.js';
+import __dirname from "./utils.js";
+import session from "express-session";
+import MongoStore from "connect-mongo";
+import initializePassport from "./config/passport.config.js";
+import passport from "passport";
+import dotenvConfig from "./config/dotenv.config.js";
+
+//const connection = mongoose.connect('mongodb+srv://zuchi:xkT3ZDTSXyDv4hB@cluster0.rvl2uyz.mongodb.net/session23?retryWrites=true&w=majority')
+
+const app = express();
+const PORT = dotenvConfig.app.PORT;
+const MONGO_URL = dotenvConfig.mongo.MONGO_URL;
+
+app.use(express.json());
+app.use(express.text());
+app.use(express.urlencoded({ extended: true }));
+app.use(session({
+  secret: 'maxVerstappen',
+  store: MongoStore.create({
+    mongoUrl: MONGO_URL,
+    ttl: 300
+  }),
+  resave: false,
+  saveUninitialized: false,
+}));
+initializePassport();
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.use('/', express.static(__dirname + '/public'));
+app.use('/',viewsRouter);
+app.use('/api',loginRouter);
+app.use("/api", productsRouter);
+// Template config engine
+app.engine('handlebars', handlebars.engine());
+app.set('views',__dirname+'/views');
+app.set('view engine', 'handlebars');
+
+
+const server = app.listen(PORT, () => {
+  console.log(
+    `Servidor escuchando en http://localhost:${server.address().port}`
+  );
+});
+
+server.on("Error", (error) => {
+  console.log("Error en el servidor", error);
+});
