@@ -21,7 +21,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(session({
   secret: 'maxVerstappen',
   store: MongoStore.create({
-    mongoUrl: 'mongodb+srv://zuchi:xkT3ZDTSXyDv4hB@cluster0.rvl2uyz.mongodb.net/session23?retryWrites=true&w=majority',
+    mongoUrl: 'mongodb+srv://zuchi:<password>@cluster0.rvl2uyz.mongodb.net/session23?retryWrites=true&w=majority',
     ttl: 300
   }),
   resave: false,

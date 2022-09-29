@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 import { ObjectId } from "mongodb";
 
- const claveMongoDb = 'ACA VA LA PASSWORD';
+ const claveMongoDb = 'xkT3ZDTSXyDv4hB';
 
 export default class MongoDBContainer {
   constructor(collection, schema) {
