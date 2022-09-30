@@ -4,7 +4,7 @@ import dotenvConfig from "../../config/dotenv.config.js";
 
  const MONGO_URL = dotenvConfig.mongo.MONGO_URL;
 
- console.log('first', MONGO_URL)
+
 
 export default class MongoDBContainer {
   constructor(collection, schema) {

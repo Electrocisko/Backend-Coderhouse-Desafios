@@ -9,11 +9,21 @@ import MongoStore from "connect-mongo";
 import initializePassport from "./config/passport.config.js";
 import passport from "passport";
 import dotenvConfig from "./config/dotenv.config.js";
+import randomRouter from './routes/random.router.js';
 
-//const connection = mongoose.connect('mongodb+srv://zuchi:xkT3ZDTSXyDv4hB@cluster0.rvl2uyz.mongodb.net/session23?retryWrites=true&w=majority')
+// Argumentos pasados por linea
+import yargs from 'yargs';
+const yargsInstance = yargs(process.argv.slice(2)).default({
+  p:0
+}).alias({
+  p:'PORT'
+})
+const args = yargsInstance.argv;
+console.log(args.PORT);
 
 const app = express();
-const PORT = dotenvConfig.app.PORT;
+//const PORT = dotenvConfig.app.PORT;
+const PORT = args.PORT || 8080;
 const MONGO_URL = dotenvConfig.mongo.MONGO_URL;
 
 app.use(express.json());
@@ -36,6 +46,8 @@ app.use('/', express.static(__dirname + '/public'));
 app.use('/',viewsRouter);
 app.use('/api',loginRouter);
 app.use("/api", productsRouter);
+app.use('/api', randomRouter);
+
 // Template config engine
 app.engine('handlebars', handlebars.engine());
 app.set('views',__dirname+'/views');

@@ -38,4 +38,21 @@ router.get('/errorregister',(req,res) => {
   res.render('errorRegister')
 });
 
+router.get('/info',(req,res) => {
+  let dir = process.cwd();
+  let plataforma = process.platform;
+  let  nodevs = process.version;
+  let mem = process.memoryUsage();
+
+  let info = {
+    Directorio: dir,
+    Plataforma: plataforma,
+    Version: nodevs,
+    Memoria: mem
+  }
+
+  res.send(info)
+})
+
 export default router;
+
