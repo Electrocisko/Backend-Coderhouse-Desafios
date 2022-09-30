@@ -43,12 +43,16 @@ router.get('/info',(req,res) => {
   let plataforma = process.platform;
   let  nodevs = process.version;
   let mem = process.memoryUsage();
+  let processPid = process.pid;
+  let proccesTitel = process.title;
 
   let info = {
     Directorio: dir,
     Plataforma: plataforma,
     Version: nodevs,
-    Memoria: mem
+    Memoria: mem,
+    PID: processPid,
+    Titel: proccesTitel
   }
 
   res.send(info)
