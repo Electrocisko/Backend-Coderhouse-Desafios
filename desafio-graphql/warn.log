@@ -1,0 +1,14 @@
+
+[2022-11-18 11:54:51] error Error in products.services get by IDTypeError: Cannot convert undefined or null to object
+[2022-11-18 11:56:06] error Error in products.services get by IDTypeError: Cannot convert undefined or null to object
+[2022-11-18 12:19:57] error Error in products.services get by IDTypeError: Cannot convert undefined or null to object
+[2022-11-21 09:01:38] error Error in getProductsController TypeError: Cannot read properties of undefined (reading 'filename') 
+[2022-11-21 09:08:21] error Error in getProductsController ValidationError: description: Path `description` is required. 
+[2022-11-21 09:10:40] error Error in getProductsController TypeError: Cannot read properties of undefined (reading 'filename') 
+[2022-11-24 16:48:35] error Error in getProductsController TypeError: Cannot read properties of undefined (reading 'filename') 
+[2022-11-24 17:03:01] error Error in getProductsController TypeError: Cannot read properties of undefined (reading 'filename') 
+[2022-11-24 17:40:24] error Error in PostProductsController TypeError: Cannot read properties of undefined (reading 'filename') 
+[2022-11-24 17:41:08] error Error in PostProductsController TypeError: Cannot read properties of undefined (reading 'filename') 
+[2022-11-24 17:41:42] error Error in PostProductsController TypeError: Cannot read properties of undefined (reading 'filename') 
+[2022-11-24 17:52:02] error Error in PostProductsController TypeError: Cannot read properties of undefined (reading 'filename') 
+[2022-11-24 17:55:24] error Error in PostProductsController TypeError: Cannot read properties of undefined (reading 'filename') 

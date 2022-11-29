@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('../partials/head.ejs') %>
+  </head>
+  <body class="container">
+    <header><%- include('../partials/navbar.ejs') %></header>
+    <main>
+      <form class="row g-3">
+        <div class="col-auto">
+          <div>
+            <% if(!user.imageUrl){ %>
+              <img src="/img/avatar.png" width="70" />
+            <% } else{ %>  
+              <img src="/img/<%= user.imageUrl %> " width="70" />
+           <% } %>
+          </div>
+          <h3>
+            Welcome <%= user.name %>
+        
+          <a href="/api/sessions/logout" >
+            <input type=" button" class="btn btn-primary btn-sm" value="Cerrar Sesión">
+          </a>
+          </h3>
+          <a href="/cart" >
+            <input type=" button" class="btn btn-primary btn-sm" value="Ver carrito">
+          </a>
+          <p id="cartId" hidden><%= user.cart %></p>
+        </div>
+        <hr />
+      </form>
+
+      <h1>Lista de productos</h1>
+
+      <div >
+       <div class='d-flex justify-content-center flex-wrap'>
+          <% products.forEach(function(product){ %> <%-
+          include('../partials/card.ejs', {product: product}); %> <% }); %>
+       </div>
+      </div>
+    </main>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+      crossorigin="anonymous"
+    ></script>
+    <script src="js/menu.js"></script>
+  </body>
+</html>
